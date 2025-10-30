@@ -25,7 +25,7 @@ pipeline {
     }
     post {
         always {
-            echo "done with this job"
+            echo "done with 2025q1.1"
         }
     }
 }
