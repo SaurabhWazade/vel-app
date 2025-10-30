@@ -10,7 +10,7 @@ pipeline {
         stage('stage-1') {
             steps {
                 sh 'rm -rf *'
-                sh 'mkdir stage-1'
+                sh 'mkdir stage-2'
             }
         }
 
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 dir('/mnt/pipeline1') {
                     sh 'rm -rf *'
-                    sh 'mkdir stage-2'
+                    sh 'mkdir stage-1'
                 }
             }
         }
