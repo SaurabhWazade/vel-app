@@ -4,14 +4,12 @@ pipeline {
     stages {
         stage ('one') {
             steps {
-                sh """rm -rf /root/.jenkins/workspace/test/master/index.html
-                yum install docker -y
-                systemctl start docker"""
+                sh "rm -rf /root/.jenkins/workspace/test/master/index.html"
             }
         }
         stage ('two') {
             steps {
-                sh "docker run -dp 80:80 --name s1 httpd"
+                sh "docker run -dp 90:80 --name s2 httpd"
             }
         }
         stage ('three') {
@@ -21,7 +19,7 @@ pipeline {
         }
         stage ('four') {
             steps {
-                sh "docker cp /root/.jenkins/workspace/test1/master/index.html s1:/usr/local/apache2/htdocs/"
+                sh "docker cp /root/.jenkins/workspace/test1/master/index.html s2:/usr/local/apache2/htdocs/"
             }
         }   
     }
