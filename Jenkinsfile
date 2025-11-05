@@ -10,13 +10,18 @@ pipeline {
         }
         stage ('two') {
             steps {
-                sh "docker run -itd --name s1 httpd"
+                sh "docker run -dp 80:80 --name s1 httpd"
             }
         }
         stage ('three') {
             steps {
-                sh "git clone "
+                sh "git clone https://github.com/SaurabhWazade/vel-app.git"
             }
         }
+        stage ('four') {
+            steps {
+                sh "docker cp /root/.jenkins/workspace/test/master/index.html s1:/usr/local/apache2/htdocs/"
+            }
+        }   
     }
 }
