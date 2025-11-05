@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('four') {
             steps {
-                sh "docker cp /root/.jenkins/workspace/test1/master/index.html s3:/usr/local/apache2/htdocs/"
+                sh "docker cp /root/.jenkins/workspace/test2/master/index.html s3:/usr/local/apache2/htdocs/"
             }
         }   
     }
