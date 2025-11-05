@@ -1,32 +1,26 @@
 pipeline {
-    agent {
-        label {
-        label 'built-in'
-        customWorkspace '/mnt/pipeline'
-        }
-    }
+    agent any
 
     stages {
-        stage('stage-1') {
+        stage ('one') {
             steps {
-                sh 'rm -rf *'
-                sh 'mkdir stage-1'
+                sh "rm -rf /root/.jenkins/workspace/test/master/index.html"
             }
         }
-
-        stage('stage-2') {
+        stage ('two') {
             steps {
-                dir('/mnt/pipeline1') {
-                    sh 'rm -rf *'
-                    sh 'mkdir stage-2'
-                }
+                sh "docker run -dp 8080:80 --name s3 httpd"
             }
         }
-    }
-    post {
-        always {
-            echo "done with 2025q1.1"
+        stage ('three') {
+            steps {
+                sh "git clone https://github.com/SaurabhWazade/vel-app.git"
+            }
         }
+        stage ('four') {
+            steps {
+                sh "docker cp /root/.jenkins/workspace/test1/master/index.html s3:/usr/local/apache2/htdocs/"
+            }
+        }   
     }
 }
-
