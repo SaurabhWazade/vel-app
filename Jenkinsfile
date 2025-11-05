@@ -1,32 +1,22 @@
 pipeline {
-    agent {
-        label {
-        label 'built-in'
-        customWorkspace '/mnt/pipeline'
-        }
-    }
+    agent any
 
     stages {
-        stage('stage-1') {
+        stage ('one') {
             steps {
-                sh 'rm -rf *'
-                sh 'mkdir stage-1'
+                sh """yum install docker -y
+                systemctl start docker"""
             }
         }
-
-        stage('stage-2') {
+        stage ('two') {
             steps {
-                dir('/mnt/pipeline1') {
-                    sh 'rm -rf *'
-                    sh 'mkdir stage-2'
-                }
+                sh "docker run -itd --name s1 httpd"
             }
         }
-    }
-    post {
-        always {
-            echo "done with this job"
+        stage ('three') {
+            steps {
+                sh "git clone "
+            }
         }
     }
 }
-
