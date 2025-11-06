@@ -20,8 +20,8 @@ pipeline {
         }
         stage ('four') {
             steps {
-                sh """docker cp /root/.jenkins/workspace/test1/index.html s2:/usr/local/apache2/htdocs/
-                docker exec s2 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html""""
+                sh """docker cp /root/.jenkins/workspace/test1/index.html s1:/usr/local/apache2/htdocs/
+                docker exec s1 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html""""
     }
 }
     }
