@@ -5,7 +5,7 @@ pipeline {
     
         stage ('one') {
             steps {
-                sh "docker cp /root/.jenkins/workspace/test/index.html s1:/usr/local/apache2/htdocs/"
+                sh "docker exec s1 sh -c "chmod 777 /usr/local/apache2/htdocs/index.html"
             }
         }   
     }
