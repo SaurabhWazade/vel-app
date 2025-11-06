@@ -14,8 +14,8 @@ pipeline {
         }
        stage ('four') {
             steps {
-                sh """docker cp /root/.jenkins/workspace/test2/index.html s3:/usr/local/apache2/htdocs/
-                docker exec s3 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html""""
+                sh '''docker cp /root/.jenkins/workspace/test2/index.html s3:/usr/local/apache2/htdocs/
+                docker exec s3 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html"'''
     }
 }
     }
