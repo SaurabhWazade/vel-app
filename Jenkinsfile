@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('three') {
             steps {
-                sh "docker cp /root/.jenkins/workspace/test1/2025Q1/index.html s2:/usr/local/apache2/htdocs/"
+                sh "docker cp /root/.jenkins/workspace/test1/index.html s2:/usr/local/apache2/htdocs/"
             }
         }   
     }
