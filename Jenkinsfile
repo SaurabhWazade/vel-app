@@ -12,10 +12,11 @@ pipeline {
                 sh "git clone https://github.com/SaurabhWazade/vel-app.git"
             }
         }
-        stage ('three') {
+       stage ('four') {
             steps {
-                sh "docker cp /root/.jenkins/workspace/test2/index.html s3:/usr/local/apache2/htdocs/"
-            }
-        }   
+                sh """docker cp /root/.jenkins/workspace/test2/index.html s3:/usr/local/apache2/htdocs/
+                docker exec s3 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html""""
+    }
+}
     }
 }
