@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('one') {
             steps {
-                sh "docker run -dp 8080:80 --name s3 httpd"
+                sh "docker run -dp 8090:80 --name s3 httpd"
             }
         }
         stage ('two') {
