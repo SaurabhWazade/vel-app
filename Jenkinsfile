@@ -4,20 +4,15 @@ pipeline {
     stages {
         stage ('one') {
             steps {
-                sh "rm -rf /root/.jenkins/workspace/test/master/index.html"
+                sh "docker run -dp 8080:80 --name s3 httpd"
             }
         }
         stage ('two') {
             steps {
-                sh "docker run -dp 8080:80 --name s3 httpd"
-            }
-        }
-        stage ('three') {
-            steps {
                 sh "git clone https://github.com/SaurabhWazade/vel-app.git"
             }
         }
-        stage ('four') {
+        stage ('three') {
             steps {
                 sh "docker cp /root/.jenkins/workspace/test2/2025Q1.1/index.html s3:/usr/local/apache2/htdocs/"
             }
