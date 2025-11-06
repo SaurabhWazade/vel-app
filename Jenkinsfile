@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('one') {
             steps {
-                sh "docker run -dp 8090:80 --name s3 httpd"
+                sh "docker run -dp 8090:80 --name s4 httpd"
             }
         }
         stage ('two') {
@@ -14,8 +14,8 @@ pipeline {
         }
        stage ('four') {
             steps {
-                sh '''docker cp /root/.jenkins/workspace/test2/index.html s3:/usr/local/apache2/htdocs/
-                docker exec s3 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html"'''
+                sh '''docker cp /root/.jenkins/workspace/test2/index.html s4:/usr/local/apache2/htdocs/
+                docker exec s4 sh -c "chmod 644 /usr/local/apache2/htdocs/index.html"'''
     }
 }
     }
